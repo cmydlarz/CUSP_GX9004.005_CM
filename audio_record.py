@@ -97,7 +97,9 @@ def recorder_callback(in_data, frame_count, time_info, status_flags):
     rms = np.sqrt(np.mean(np.square(audio_data)))
 
     # Print RMS to console
-    print rms
+    if rms > 0.2:
+    	print rms
+	print "Level exceeded!!!"
 
     # Write audio byte array values to wave file
     wavefile.writeframes(in_data)
